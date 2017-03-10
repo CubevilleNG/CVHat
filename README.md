@@ -1,0 +1,2 @@
+# CVHat
+Cubeville Hat Plugin
