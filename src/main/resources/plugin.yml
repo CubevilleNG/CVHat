@@ -1,0 +1,20 @@
+name: CVHat
+version: 1.0
+main: org.cubeville.cvhat.CVHat
+description: Blockhead rank plugin
+author: RandomRob13
+
+commands:
+  hat:
+    description: Applies the held block to your head.
+    usage: /hat
+    permission: cvranks.hat
+    
+permissions:
+  cvranks.hat:
+    description: Permission for the /hat command
+    default: op
+  cvranks.hat.any:
+    description: Unlock the filter of the /hat command
+    default: op
+    
