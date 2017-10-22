@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -27,15 +28,19 @@ public class CVHat extends JavaPlugin {
             PlayerInventory inventory = player.getInventory();
             ItemStack itemInHand = inventory.getItemInMainHand();
             ItemStack itemInHelmet = inventory.getHelmet();
-            if (itemInHand.getAmount() == 1) {
-                if (player.hasPermission("cvranks.hat.any") || allowedBlocks.contains(itemInHand.getType() + "")) {
-                    inventory.setHelmet(itemInHand);
-                    inventory.setItemInMainHand(itemInHelmet);
+            if(itemInHelmet.getEnchantmentLevel(Enchantment.BINDING_CURSE) == 0) {
+                if (itemInHand.getAmount() == 1) {
+                    if (player.hasPermission("cvranks.hat.any") || allowedBlocks.contains(itemInHand.getType() + "")) {
+                        inventory.setHelmet(itemInHand);
+                        inventory.setItemInMainHand(itemInHelmet);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "You can't put that on your head.");
+                    }
                 } else {
-                    player.sendMessage(ChatColor.RED + "You can't put that on your head.");
+                    player.sendMessage(ChatColor.RED + "Please only hold 1 item!");
                 }
             } else {
-                player.sendMessage(ChatColor.RED + "Please only hold 1 item!");
+                player.sendMessage(ChatColor.RED + "You can't take that item off your head!");
             }
             return true;
         }
