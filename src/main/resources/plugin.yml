@@ -8,13 +8,13 @@ commands:
   hat:
     description: Applies the held block to your head.
     usage: /hat
-    permission: cvranks.hat
+    permission: cvhat.hat
     
 permissions:
-  cvranks.hat:
+  cvhat.hat:
     description: Permission for the /hat command
     default: op
-  cvranks.hat.any:
+  cvhat.hat.any:
     description: Unlock the filter of the /hat command
     default: op
     

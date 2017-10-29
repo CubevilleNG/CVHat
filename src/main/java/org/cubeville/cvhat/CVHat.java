@@ -28,9 +28,9 @@ public class CVHat extends JavaPlugin {
             PlayerInventory inventory = player.getInventory();
             ItemStack itemInHand = inventory.getItemInMainHand();
             ItemStack itemInHelmet = inventory.getHelmet();
-            if(itemInHelmet.getEnchantmentLevel(Enchantment.BINDING_CURSE) == 0) {
+            if(itemInHelmet == null || itemInHelmet.getEnchantmentLevel(Enchantment.BINDING_CURSE) == 0) {
                 if (itemInHand.getAmount() == 1) {
-                    if (player.hasPermission("cvranks.hat.any") || allowedBlocks.contains(itemInHand.getType() + "")) {
+                    if (player.hasPermission("cvhat.hat.any") || allowedBlocks.contains(itemInHand.getType() + "")) {
                         inventory.setHelmet(itemInHand);
                         inventory.setItemInMainHand(itemInHelmet);
                     } else {
