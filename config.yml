@@ -1,5 +1,4 @@
-parent:
-
+blocks:
 - AIR
 - ANVIL  
 - BANNER 
@@ -140,4 +139,3 @@ parent:
 - WOOL 
 - WORKBENCH 
 - YELLOW_SHULKER_BOX 
-  
