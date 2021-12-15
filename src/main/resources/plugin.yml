@@ -2,8 +2,8 @@ name: CVHat
 version: 1.0
 main: org.cubeville.cvhat.CVHat
 description: Blockhead rank plugin
-authors: [RandomRob13,FrediW]
-api-version: 1.16
+authors: [RandomRob13,FrediW,Ptown16]
+api-version: 1.18
 
 commands:
   hat:

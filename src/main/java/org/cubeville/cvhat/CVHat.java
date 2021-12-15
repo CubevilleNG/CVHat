@@ -1,31 +1,27 @@
 package org.cubeville.cvhat;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CVHat extends JavaPlugin implements Listener {
 
-    Map<String, List<String>> allowedBlocks;
+    private Map<String, List<String>> allowedBlocks;
     
     @Override
     public void onEnable() {
+    	this.saveDefaultConfig();
 	allowedBlocks = new HashMap<>();
 	Set<String> permissions = getConfig().getConfigurationSection("blocks").getKeys(false);
 	for(String permission: permissions) {
@@ -68,7 +64,7 @@ public class CVHat extends JavaPlugin implements Listener {
 	}
 	else {
 	    for(String permission: allowedBlocks.keySet()) {
-		if(player.hasPermission("cvhat.hat." + permission) == true && allowedBlocks.get(permission).contains(itemName)) {
+		if(player.hasPermission("cvhat.hat." + permission) && allowedBlocks.get(permission).contains(itemName)) {
 		    hasPermission = true;
 		    break;
 		}
@@ -81,7 +77,7 @@ public class CVHat extends JavaPlugin implements Listener {
         //     return true;
         // }
 
-	if(hasPermission == false) {
+	if(!hasPermission) {
 	    player.sendMessage(ChatColor.RED + "This item can't be put on your head!");
 	    return true;
 	}
